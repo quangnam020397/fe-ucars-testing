@@ -14,7 +14,7 @@ import { IBrand } from './models/Brand';
 import { DialogConfirmDeleteBrandComponent } from './components/dialog-confirm-delete-brand/dialog-confirm-delete-brand.component';
 import { DialogAddUpdateBrandComponent } from './components/dialog-add-update-brand/dialog-add-update-brand.component';
 import { BrandHeaderComponent } from './components/brand-header/brand-header.component';
-import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-car-brand',
@@ -27,13 +27,9 @@ export class CarBrandComponent implements AfterViewInit, OnInit, OnDestroy {
 
   subscriptions: Subscription = new Subscription();
   dataSource: IBrand[] = [];
+  valueSearch: string = '';
 
-  constructor(
-    private httpServ: HttpRequestService,
-    public dialog: MatDialog,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) {}
+  constructor(private httpServ: HttpRequestService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.fetchBranchData();
@@ -89,7 +85,7 @@ export class CarBrandComponent implements AfterViewInit, OnInit, OnDestroy {
       data: null,
     });
     dialogRef.afterClosed().subscribe((result) => {
-      this.fetchBranchData();
+      this.fetchBranchData(this.valueSearch);
     });
   };
 
@@ -99,11 +95,12 @@ export class CarBrandComponent implements AfterViewInit, OnInit, OnDestroy {
       data: id,
     });
     dialogRef.afterClosed().subscribe((result) => {
-      this.fetchBranchData();
+      this.fetchBranchData(this.valueSearch);
     });
   };
 
   handleSearchBrand = (value: string) => {
+    this.valueSearch = value;
     this.fetchBranchData(value);
   };
 }
