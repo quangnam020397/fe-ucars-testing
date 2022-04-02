@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Confirm</h1>
+<div mat-dialog-content>
+  <p>delete car brand {{ data }}</p>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-between">
+  <button mat-raised-button color="primary" (click)="dialogRef.close(false)">Cancel</button>
+  <button mat-raised-button color="warn" (click)="dialogRef.close(true)">Delete it</button>
+</div>

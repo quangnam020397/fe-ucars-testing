@@ -1,6 +1,10 @@
 <div class="p-3">
   <mat-card>
     <app-brand-header></app-brand-header>
-    <app-brand-table (onchangePage)="handleChangePaginator($event)"></app-brand-table>
+    <app-brand-table
+      (onchangePage)="handleChangePaginator($event)"
+      (onUpdateBranch)="handleUpdateBrand($event)"
+      (onDeleteBranch)="openDialogDeleteBrand($event)"
+    ></app-brand-table>
   </mat-card>
 </div>

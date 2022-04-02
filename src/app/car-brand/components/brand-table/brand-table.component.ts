@@ -22,11 +22,15 @@ export class BrandTableComponent implements AfterViewInit, OnInit {
     'name',
     'description',
     'created_at',
+    'action'
   ];
   dataSource = new MatTableDataSource<IBrand>([]);
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   @Output() onchangePage = new EventEmitter<PageEvent>();
+  @Output() onDeleteBranch = new EventEmitter<IBrand>();
+  @Output() onUpdateBranch = new EventEmitter<string>();
+
 
   ngOnInit(): void {
     console.log(this.dataSource);

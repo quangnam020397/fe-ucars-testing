@@ -71,6 +71,9 @@ export class HttpRequestService {
 
   public getAllBrand = <T>(): Observable<IDataResponse<T>> =>
     this.get('branch');
+
+  public deleteBrand = <T>(id: string): Observable<IDataResponse<T>> =>
+    this.delete(`branch/${id}`);
 }
 
 interface IDataResponse<T> {

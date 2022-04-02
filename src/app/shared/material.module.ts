@@ -22,6 +22,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSortModule } from '@angular/material/sort';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -43,6 +44,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatTooltipModule,
     MatTableModule,
     MatPaginatorModule,
+    MatDialogModule,
   ],
   exports: [
     MatButtonModule,
@@ -76,6 +78,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatFormField,
     MatToolbarModule,
     MatButtonModule,
+    MatDialogModule,
   ],
   providers: [MatDatepickerModule],
 })

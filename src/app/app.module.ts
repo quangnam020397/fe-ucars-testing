@@ -12,6 +12,8 @@ import { BrandTableComponent } from './car-brand/components/brand-table/brand-ta
 import { AngularMaterialModule } from './shared/material.module';
 import { HttpRequestService } from './services/http/http-request.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DialogConfirmDeleteBrandComponent } from './car-brand/components/dialog-confirm-delete-brand/dialog-confirm-delete-brand.component';
+import { DialogAddUpdateBrandComponent } from './car-brand/components/dialog-add-update-brand/dialog-add-update-brand.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     CarBrandComponent,
     BrandHeaderComponent,
     BrandTableComponent,
+    DialogConfirmDeleteBrandComponent,
+    DialogAddUpdateBrandComponent,
   ],
   imports: [
     BrowserModule,
