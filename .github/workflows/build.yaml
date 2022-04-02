@@ -36,3 +36,15 @@ jobs:
       # verify docker images
       - name: Verify
         run: echo ${{ steps.docker_build.outputs.digest }}
+
+  redeploy:
+    runs-on: ubuntu-latest
+      steps:
+        - name: Executing remote command
+          uses: appleboy/ssh-action@master
+          with:
+            host: ${{ secrets.HOST }}
+            USERNAME: ${{ secrets.USERNAME }}
+            PORT: ${{ secrets.PORT }}
+            KEY: ${{ secrets.SSHKEY }}
+            script: ls
