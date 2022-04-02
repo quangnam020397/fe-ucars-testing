@@ -45,5 +45,7 @@ jobs:
           USERNAME: ${{ secrets.USERNAME }}
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSHKEY }}
-          script: sh /home/kevin/docker/ucars-testing/redeploy.fe.sh
+          script: |
+            cd /home/kevin/docker/ucars-testing
+            sh redeploy.fe.sh
 
