@@ -1,1 +1,98 @@
-<p>dialog-add-update-brand works!</p>
+<h1 mat-dialog-title>{{ data ? "Update " : "New " }}Car Brand</h1>
+<div mat-dialog-content>
+  <mat-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Brand Information</ng-template>
+        <div class="">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Name</mat-label>
+            <input
+              matInput
+              placeholder="name of the brand"
+              formControlName="name"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Description</mat-label>
+            <input
+              matInput
+              placeholder="description of the brand"
+              formControlName="description"
+              required
+            />
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Upload brand logo">
+      <form [formGroup]="secondFormGroup">
+        <div class="d-flex flex-column">
+          <div class="pb-3">
+            <mat-label>Brand Logo</mat-label>
+          </div>
+          <div class="" *ngIf="previewLogoFile">
+            <img
+              style="max-height: 300px"
+              class="img-fluid"
+              [src]="previewLogoFile"
+              alt="brand logo"
+            />
+          </div>
+          <div class="">
+            <input
+              #csvInput
+              hidden="true"
+              type="file"
+              onclick="this.value=null"
+              (change)="handleImageChange($event)"
+              accept="image/*"
+              formControlName="secondCtrl"
+              required
+            />
+            <button mat-flat-button color="primary" (click)="csvInput.click()">
+              Choose Logo Images
+            </button>
+          </div>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+    </mat-step>
+    <button mat-button matStepperPrevious>Back</button>
+    <button mat-button matStepperNext>Next</button>
+  </mat-stepper>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-between">
+  <button mat-raised-button color="primary" (click)="dialogRef.close(false)">
+    Cancel
+  </button>
+
+  <button
+    [disabled]="stepper._getFocusIndex() === 0"
+    mat-button
+    (click)="stepper.previous()"
+  >
+    Back
+  </button>
+  <button
+    [disabled]="stepper._getFocusIndex() === 2"
+    mat-button
+    (click)="stepper.next(); handleNextStep(stepper._getFocusIndex())"
+  >
+    Next
+  </button>
+  <button
+    [disabled]="stepper._getFocusIndex() !== 2"
+    mat-raised-button
+    color="warn"
+    (click)="dialogRef.close(true)"
+  >
+    Finish
+  </button>
+</div>

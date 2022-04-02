@@ -12,6 +12,7 @@ import { HttpRequestService } from '../services/http/http-request.service';
 import { BrandTableComponent } from './components/brand-table/brand-table.component';
 import { IBrand } from './models/Brand';
 import { DialogConfirmDeleteBrandComponent } from './components/dialog-confirm-delete-brand/dialog-confirm-delete-brand.component';
+import { DialogAddUpdateBrandComponent } from './components/dialog-add-update-brand/dialog-add-update-brand.component';
 
 @Component({
   selector: 'app-car-brand',
@@ -52,7 +53,7 @@ export class CarBrandComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   handleUpdateBrand = (id: string) => {
-    console.log({ id });
+    this.openModalUpdateBrand(id);
   };
 
   handleDeleteBrand = (id: string) => {
@@ -71,6 +72,26 @@ export class CarBrandComponent implements AfterViewInit, OnInit, OnDestroy {
       if (result && elem.id) {
         this.handleDeleteBrand(elem.id);
       }
+    });
+  };
+
+  openModalAddNewBrand = () => {
+    const dialogRef = this.dialog.open(DialogAddUpdateBrandComponent, {
+      width: '600px',
+      data: null,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      this.fetchBranchData();
+    });
+  };
+
+  openModalUpdateBrand = (id: string) => {
+    const dialogRef = this.dialog.open(DialogAddUpdateBrandComponent, {
+      width: '600px',
+      data: id,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      this.fetchBranchData();
     });
   };
 }

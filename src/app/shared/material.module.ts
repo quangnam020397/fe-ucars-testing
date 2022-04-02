@@ -23,6 +23,18 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatTreeModule } from '@angular/material/tree';
 
 @NgModule({
   imports: [
@@ -45,6 +57,13 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTableModule,
     MatPaginatorModule,
     MatDialogModule,
+    MatProgressBarModule,
+    MatSnackBarModule,
+    MatTabsModule,
+    MatCheckboxModule,
+    MatExpansionModule,
+    MatStepperModule,
+    MatAutocompleteModule,
   ],
   exports: [
     MatButtonModule,
@@ -79,6 +98,14 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatToolbarModule,
     MatButtonModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatSnackBarModule,
+    MatTabsModule,
+    MatCheckboxModule,
+    MatExpansionModule,
+    MatStepperModule,
+    MatAutocompleteModule,
   ],
   providers: [MatDatepickerModule],
 })

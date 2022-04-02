@@ -7,3 +7,9 @@ export interface IBrand {
   updated_at?: string;
   deleted_at?: string | null;
 }
+
+export interface IBrandCreate {
+  name: string;
+  description: string;
+  logo: string;
+}

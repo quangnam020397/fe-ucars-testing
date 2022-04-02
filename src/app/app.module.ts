@@ -14,6 +14,7 @@ import { HttpRequestService } from './services/http/http-request.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogConfirmDeleteBrandComponent } from './car-brand/components/dialog-confirm-delete-brand/dialog-confirm-delete-brand.component';
 import { DialogAddUpdateBrandComponent } from './car-brand/components/dialog-add-update-brand/dialog-add-update-brand.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { DialogAddUpdateBrandComponent } from './car-brand/components/dialog-add
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [HttpRequestService],
   bootstrap: [AppComponent],

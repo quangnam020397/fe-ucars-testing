@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IBrandCreate } from 'src/app/car-brand/models/Brand';
 import { environment } from 'src/environments/environment';
 import { HttpHeaderService } from './http-header.service';
 
@@ -74,6 +75,26 @@ export class HttpRequestService {
 
   public deleteBrand = <T>(id: string): Observable<IDataResponse<T>> =>
     this.delete(`branch/${id}`);
+
+  public createBrand = <T>(body: IBrandCreate): Observable<IDataResponse<T>> =>
+    this.post('branch', body);
+
+  public getBrandById = <T>(id: string): Observable<IDataResponse<T>> =>
+    this.get(`branch/${id}`);
+
+  public updateBrand = <T>(
+    id: string,
+    body: IBrandCreate
+  ): Observable<IDataResponse<T>> => this.put(`branch/${id}`, body);
+
+  public uploadImage = <T>(
+    id: string,
+    body: FormData
+  ): Observable<IDataResponse<T>> =>
+    this.httpClient.post<IDataResponse<T>>(
+      this.requestAPI(`branch/${id}/logo`),
+      body
+    );
 }
 
 interface IDataResponse<T> {

@@ -1,6 +1,6 @@
 <div class="p-3">
   <mat-card>
-    <app-brand-header></app-brand-header>
+    <app-brand-header (onAddBrand)="openModalAddNewBrand()"></app-brand-header>
     <app-brand-table
       (onchangePage)="handleChangePaginator($event)"
       (onUpdateBranch)="handleUpdateBrand($event)"
