@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:8080/api/v1/'
+  apiUrl: 'https://ucars-testing.kevin-nguyen.tk/api/v1/'
 };
