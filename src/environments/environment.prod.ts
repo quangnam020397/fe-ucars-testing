@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://ucars-testing.kevin-nguyen.tk/api/v1/'
+  apiUrl: 'https://be-ucars-testing.kevin-nguyen.tk/api/v1/'
 };
