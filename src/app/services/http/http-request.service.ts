@@ -19,7 +19,7 @@ export class HttpRequestService {
   }
 
   private requestAPI(api: string) {
-    return environment.apiUrl + api;
+    return environment.apiUrl + api + '/';
   }
 
   private get<T>(
