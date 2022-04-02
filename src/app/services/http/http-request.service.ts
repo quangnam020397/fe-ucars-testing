@@ -11,7 +11,7 @@ import { HttpHeaderService } from './http-header.service';
 export class HttpRequestService {
   constructor(private httpClient: HttpClient) {}
 
-  private getHeader(myParams?: undefined, isNeedAuth0 = true) {
+  private getHeader(myParams?: any, isNeedAuth0 = true) {
     return {
       headers: HttpHeaderService.getInstance().getRequestHeader(isNeedAuth0),
       params: myParams,
@@ -24,7 +24,7 @@ export class HttpRequestService {
 
   private get<T>(
     api: string,
-    myParams?: undefined,
+    myParams?: any,
     isNeedAuth0 = true
   ): Observable<IDataResponse<T>> {
     return this.httpClient.get<IDataResponse<T>>(
@@ -36,7 +36,7 @@ export class HttpRequestService {
   private post<T>(
     api: string,
     body: any,
-    myParams?: undefined,
+    myParams?: any,
     isNeedAuth0 = true
   ): Observable<IDataResponse<T>> {
     return this.httpClient.post<IDataResponse<T>>(
@@ -49,7 +49,7 @@ export class HttpRequestService {
   private put<T>(
     api: string,
     body: any,
-    myParams?: undefined,
+    myParams?: any,
     isNeedAuth0 = true
   ): Observable<IDataResponse<T>> {
     return this.httpClient.put<IDataResponse<T>>(
@@ -61,7 +61,7 @@ export class HttpRequestService {
 
   private delete<T>(
     api: string,
-    myParams?: undefined,
+    myParams?: any,
     isNeedAuth0 = true
   ): Observable<IDataResponse<T>> {
     return this.httpClient.delete<IDataResponse<T>>(
@@ -70,8 +70,8 @@ export class HttpRequestService {
     );
   }
 
-  public getAllBrand = <T>(): Observable<IDataResponse<T>> =>
-    this.get('branch');
+  public getAllBrand = <T>(params: any): Observable<IDataResponse<T>> =>
+    this.get('branch', params);
 
   public deleteBrand = <T>(id: string): Observable<IDataResponse<T>> =>
     this.delete(`branch/${id}`);

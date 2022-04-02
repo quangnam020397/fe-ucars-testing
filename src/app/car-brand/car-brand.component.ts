@@ -13,6 +13,8 @@ import { BrandTableComponent } from './components/brand-table/brand-table.compon
 import { IBrand } from './models/Brand';
 import { DialogConfirmDeleteBrandComponent } from './components/dialog-confirm-delete-brand/dialog-confirm-delete-brand.component';
 import { DialogAddUpdateBrandComponent } from './components/dialog-add-update-brand/dialog-add-update-brand.component';
+import { BrandHeaderComponent } from './components/brand-header/brand-header.component';
+import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-car-brand',
@@ -21,20 +23,26 @@ import { DialogAddUpdateBrandComponent } from './components/dialog-add-update-br
 })
 export class CarBrandComponent implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild(BrandTableComponent) brandTable!: BrandTableComponent;
+  @ViewChild(BrandHeaderComponent) brandHeader!: BrandHeaderComponent;
 
   subscriptions: Subscription = new Subscription();
   dataSource: IBrand[] = [];
 
-  constructor(private httpServ: HttpRequestService, public dialog: MatDialog) {}
+  constructor(
+    private httpServ: HttpRequestService,
+    public dialog: MatDialog,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.fetchBranchData();
   }
 
-  private fetchBranchData = () => {
+  private fetchBranchData = (valueSearch: string = '') => {
     this.subscriptions.add(
       this.httpServ
-        .getAllBrand<IBrand[]>()
+        .getAllBrand<IBrand[]>(valueSearch ? { searchValue: valueSearch } : {})
         .subscribe(({ data, code, message }) => {
           this.dataSource = data;
           this.brandTable.setDataSource(this.dataSource);
@@ -93,5 +101,9 @@ export class CarBrandComponent implements AfterViewInit, OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe((result) => {
       this.fetchBranchData();
     });
+  };
+
+  handleSearchBrand = (value: string) => {
+    this.fetchBranchData(value);
   };
 }
